@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 export type TRestaurant = {
@@ -29,26 +28,51 @@ export const RestaurantInfo: FC<Props> = ({
   },
 }) => {
   return (
-    //   @ts-ignore
-    <Card style={styles.CardContainer}>
-      {/* @ts-ignore */}
-      <Card.Cover source={require('../../assets/restaurant1.jpg')} />
-      <Card.Content>
-        <BottomCardContent>
-          <Title>{name}</Title>
-          <Subheading>{address}</Subheading>
-        </BottomCardContent>
-      </Card.Content>
-    </Card>
+    <Container style={styles.shadow}>
+      <Image
+        style={styles.image}
+        source={require('../../assets/restaurant1.jpg')}
+      />
+      <ContentContainer>
+        <Title>{name}</Title>
+        <SubTitle>{address}</SubTitle>
+      </ContentContainer>
+    </Container>
   );
 };
 
 const styles = StyleSheet.create({
-  CardContainer: {
-    padding: 10,
+  image: {
+    width: '100%',
+    height: '80%',
+    resizeMode: 'cover',
+  },
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+
+    elevation: 6,
   },
 });
 
-const BottomCardContent = styled.View``;
+const Container = styled.View`
+  width: 100%;
+  height: 400px;
+  padding: 10px;
+`;
 
-const Subheading = styled.Text``;
+const ContentContainer = styled.View`
+  padding: 10px;
+`;
+
+const Title = styled.Text`
+  font-size: 20px;
+`;
+const SubTitle = styled.Text`
+  font-size: 16px;
+`;
