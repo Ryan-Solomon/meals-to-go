@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { StatusBar } from 'react-native';
+import { SearchbarComponent } from './src/components/Searchbar';
 
 export default function App() {
   return (
     <Container>
-      <SearchBar />
+      <SearchbarComponent />
       <List />
     </Container>
   );
