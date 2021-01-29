@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
 
 const Container = styled.SafeAreaView`
   flex: 1;
-  padding: 20px 0px;
+  margin-top: ${StatusBar.currentHeight}px;
 `;
 
 const SearchBar = styled.View`
