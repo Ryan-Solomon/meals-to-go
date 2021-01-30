@@ -5,7 +5,5 @@ interface IPalette {
   contrastText: string;
 }
 declare module 'styled-components' {
-  export interface DefaultTheme {
-    theme: TTheme;
-  }
+  export interface DefaultTheme {}
 }

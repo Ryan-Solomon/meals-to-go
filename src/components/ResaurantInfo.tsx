@@ -66,12 +66,12 @@ const Container = styled.View`
 `;
 
 const ContentContainer = styled.View`
-  padding: 10px;
+  padding: ${({ theme }) => theme.theme.sizes[0]};
 `;
 
 const Title = styled.Text`
   font-size: ${({ theme }) => theme.theme.fontSizes.h3};
 `;
 const SubTitle = styled.Text`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.theme.fontSizes.h5};
 `;
