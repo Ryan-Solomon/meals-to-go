@@ -1,14 +1,17 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { StatusBar } from 'react-native';
-import { SearchbarComponent } from './src/components/Searchbar';
 import { RestaurantsScreen } from './src/screens/RestaurantsScreen';
+import { ThemeProvider } from 'styled-components/native';
+import { theme } from './src/infrastructure/theme';
 
 export default function App() {
   return (
-    <Container>
-      <RestaurantsScreen />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <RestaurantsScreen />
+      </Container>
+    </ThemeProvider>
   );
 }
 
