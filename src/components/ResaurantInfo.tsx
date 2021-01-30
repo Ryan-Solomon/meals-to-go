@@ -29,10 +29,8 @@ export const RestaurantInfo: FC<Props> = ({
 }) => {
   return (
     <Container style={styles.shadow}>
-      <Image
-        style={styles.image}
-        source={require('../../assets/restaurant1.jpg')}
-      />
+      {/* @ts-ignore */}
+      <Image style={styles.image} source={photos[0]} />
       <ContentContainer>
         <Title>{name}</Title>
         <SubTitle>{address}</SubTitle>
