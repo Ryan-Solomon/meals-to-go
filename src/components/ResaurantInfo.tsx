@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
-import { DefaultTheme } from './../styled.d';
 
 export type TRestaurant = {
   name: string;
@@ -62,16 +61,16 @@ const styles = StyleSheet.create({
 const Container = styled.View`
   width: 100%;
   height: 400px;
-  padding: ${({ theme }) => theme.theme.sizes[0]};
+  padding: ${({ theme }) => theme.sizes[0]};
 `;
 
 const ContentContainer = styled.View`
-  padding: ${({ theme }) => theme.theme.sizes[0]};
+  padding: ${({ theme }) => theme.sizes[0]};
 `;
 
 const Title = styled.Text`
-  font-size: ${({ theme }) => theme.theme.fontSizes.h3};
+  font-size: ${({ theme }) => theme.fontSizes.h4};
 `;
 const SubTitle = styled.Text`
-  font-size: ${({ theme }) => theme.theme.fontSizes.h5};
+  font-size: ${({ theme }) => theme.fontSizes.h6};
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { StatusBar } from 'react-native';
 import { RestaurantsScreen } from './src/screens/RestaurantsScreen';
 import { ThemeProvider } from 'styled-components/native';
-import { theme, TTheme } from './src/infrastructure/theme/index';
+import { theme } from './src/infrastructure/theme/index';
 
 export default function App() {
   return (

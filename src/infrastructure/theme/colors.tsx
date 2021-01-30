@@ -26,3 +26,5 @@ export const colors = {
     success: '#138000',
   },
 };
+
+export type TColors = typeof colors;
