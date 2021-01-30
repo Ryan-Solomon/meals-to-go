@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Image, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import { theme } from './../infrastructure/theme/index';
 
 export type TRestaurant = {
   name: string;
@@ -56,12 +57,14 @@ const Container = styled.View`
 `;
 
 const ContentContainer = styled.View`
-  padding: ${({ theme }) => theme.space[2]};
+  padding: ${({ theme }) => theme.space[1]};
 `;
 
 const Title = styled.Text`
   font-size: ${({ theme }) => theme.fontSizes.h4};
+  font-family: ${({ theme }) => theme.fonts.heading};
 `;
 const SubTitle = styled.Text`
   font-size: ${({ theme }) => theme.fontSizes.h6};
+  font-family: ${({ theme }) => theme.fonts.body};
 `;
