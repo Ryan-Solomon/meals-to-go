@@ -5,6 +5,7 @@ import { SvgXml } from 'react-native-svg';
 import star from '../../assets/star';
 import open from '../../assets/open';
 import nextId from 'react-id-generator';
+import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
 export type TRestaurant = {
   name: string;
@@ -21,15 +22,7 @@ type Props = {
 };
 
 export const RestaurantInfo: FC<Props> = ({
-  restaurant: {
-    name,
-    icon,
-    photos,
-    address,
-    isOpenNow,
-    rating,
-    isClosedTemporarily,
-  },
+  restaurant: { name, icon, photos, address, isOpenNow, rating },
 }) => {
   const stars = new Array(Math.floor(rating)).fill(null);
 
@@ -52,6 +45,9 @@ export const RestaurantInfo: FC<Props> = ({
               <ClosedTitle>Closed</ClosedTitle>
             )}
           </View>
+          <View>
+            <Image style={styles.iconImage} source={{ uri: icon }} />
+          </View>
         </StarsContainer>
         <SubTitle>{address}</SubTitle>
       </ContentContainer>
@@ -64,6 +60,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200,
     resizeMode: 'cover',
+  },
+  iconImage: {
+    height: 15,
+    width: 15,
+    backgroundColor: 'black',
   },
 });
 
