@@ -28,7 +28,7 @@ export const RestaurantInfo: FC<Props> = ({
   },
 }) => {
   return (
-    <Container style={styles.shadow}>
+    <Container style={{ elevation: 10 }}>
       {/* @ts-ignore */}
       <Image style={styles.image} source={photos[0]} />
       <ContentContainer>
@@ -45,27 +45,18 @@ const styles = StyleSheet.create({
     height: '80%',
     resizeMode: 'cover',
   },
-  shadow: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-
-    elevation: 6,
-  },
 });
 
 const Container = styled.View`
   width: 100%;
   height: 400px;
-  padding: ${({ theme }) => theme.sizes[0]};
+  padding: ${({ theme }) => theme.space[3]};
+  background-color: white;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
 `;
 
 const ContentContainer = styled.View`
-  padding: ${({ theme }) => theme.sizes[0]};
+  padding: ${({ theme }) => theme.space[2]};
 `;
 
 const Title = styled.Text`
