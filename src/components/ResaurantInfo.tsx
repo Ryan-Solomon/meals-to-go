@@ -46,7 +46,11 @@ export const RestaurantInfo: FC<Props> = ({
             ))}
           </View>
           <View>
-            {isOpenNow && <SvgXml xml={open} height={30} width={30} />}
+            {isOpenNow ? (
+              <SvgXml xml={open} height={30} width={30} />
+            ) : (
+              <ClosedTitle>Closed</ClosedTitle>
+            )}
           </View>
         </StarsContainer>
         <SubTitle>{address}</SubTitle>
@@ -91,4 +95,8 @@ const StarsContainer = styled.View`
   align-items: center;
   padding: 10px 0px;
   padding-right: 10px;
+`;
+
+const ClosedTitle = styled(SubTitle)`
+  color: red;
 `;
