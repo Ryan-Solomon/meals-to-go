@@ -1,5 +1,6 @@
 import React from 'react';
 import { RestaurantInfo, TRestaurant } from '../components/ResaurantInfo';
+import { FlatList } from 'react-native';
 const img = require('../../assets/restaurant1.jpg');
 
 const restaurant: TRestaurant = {
@@ -12,10 +13,16 @@ const restaurant: TRestaurant = {
   isClosedTemporarily: false,
 };
 
+const restaurantArray = new Array(10).fill(restaurant);
+
 export const RestaurantsScreen = () => {
   return (
     <>
-      <RestaurantInfo restaurant={restaurant} />
+      <FlatList
+        data={restaurantArray}
+        renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
+        keyExtractor={(item, idx) => item.name + idx}
+      />
     </>
   );
 };

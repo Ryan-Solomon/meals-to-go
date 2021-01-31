@@ -5,7 +5,6 @@ import { SvgXml } from 'react-native-svg';
 import star from '../../assets/star';
 import open from '../../assets/open';
 import nextId from 'react-id-generator';
-import { black } from 'react-native-paper/lib/typescript/styles/colors';
 
 export type TRestaurant = {
   name: string;
