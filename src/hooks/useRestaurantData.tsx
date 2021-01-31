@@ -9,5 +9,5 @@ type TStatus = 'loading' | 'error' | 'fulfilled';
 export const useRestaurantData = () => {
   const [restaurant, setRestaurants] = useState([]);
   const [status, setStatus] = useState<TStatus>('loading');
-  return null;
+  return { data: restaurant, status };
 };
