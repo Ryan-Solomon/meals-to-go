@@ -73,6 +73,7 @@ const Container = styled.View`
   padding: ${({ theme }) => theme.space[3]};
   background-color: white;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: ${({ theme }) => theme.space[3]};
 `;
 
 const ContentContainer = styled.View`
