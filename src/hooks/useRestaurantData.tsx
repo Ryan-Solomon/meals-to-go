@@ -1,13 +1,14 @@
 // Create a custom hook to use SWR to fetch resaurant data
 // At first, just grab data from mock data
 // Then, you can actually use SWR once ya'll get there
+// Also, setup activity indicator while loading
 
 import React, { useState } from 'react';
 
-type TStatus = 'loading' | 'error' | 'fulfilled';
-
 export const useRestaurantData = () => {
-  const [restaurant, setRestaurants] = useState([]);
-  const [status, setStatus] = useState<TStatus>('loading');
-  return { data: restaurant, status };
+  const [restaurants, setRestaurants] = useState([]);
+  return {
+    data: restaurants,
+    status: restaurants.length > 0 ? 'fulfilled' : 'loading',
+  };
 };
