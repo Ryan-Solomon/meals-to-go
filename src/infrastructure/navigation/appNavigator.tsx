@@ -1,5 +1,5 @@
+// @ts-ignore
 import Ionicons from '@expo/vector-icons/Ionicons';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
