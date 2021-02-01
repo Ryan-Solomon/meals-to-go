@@ -11,9 +11,10 @@ export type TRestaurant = {
   icon: string;
   photos: string[];
   address: string;
-  isOpenNow: boolean;
+  opening_hours: {
+    open_now: boolean;
+  };
   rating: number;
-  isClosedTemporarily: boolean;
 };
 
 type Props = {
@@ -21,7 +22,7 @@ type Props = {
 };
 
 export const RestaurantInfo: FC<Props> = ({
-  restaurant: { name, icon, photos, address, isOpenNow, rating },
+  restaurant: { name, icon, photos, address, opening_hours, rating },
 }) => {
   const stars = new Array(Math.floor(rating)).fill(null);
 
@@ -38,7 +39,7 @@ export const RestaurantInfo: FC<Props> = ({
             ))}
           </View>
           <View>
-            {isOpenNow ? (
+            {opening_hours.open_now ? (
               <SvgXml xml={open} height={30} width={30} />
             ) : (
               <ClosedTitle>Closed</ClosedTitle>

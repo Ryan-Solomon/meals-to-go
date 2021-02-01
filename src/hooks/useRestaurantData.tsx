@@ -3,10 +3,12 @@
 // Then, you can actually use SWR once ya'll get there
 // Also, setup activity indicator while loading
 
+import data from '../mock/chicago.json';
+
 import React, { useState } from 'react';
 
 export const useRestaurantData = () => {
-  const [restaurants, setRestaurants] = useState([]);
+  const [restaurants, setRestaurants] = useState(data.results);
   return {
     data: restaurants,
     status: restaurants.length > 0 ? 'fulfilled' : 'loading',
