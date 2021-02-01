@@ -12,6 +12,7 @@ export type TRestaurant = {
   icon: string;
   photos: string[];
   vicinity: string;
+  place_id: string;
   opening_hours: {
     open_now: boolean;
   };
@@ -23,13 +24,15 @@ type Props = {
 };
 
 export const RestaurantInfo: FC<Props> = ({
-  restaurant: { name, icon, photos, vicinity, opening_hours, rating },
+  restaurant: { name, icon, photos, vicinity, opening_hours, rating, place_id },
 }) => {
   const stars = new Array(Math.floor(rating)).fill(null);
   const navigation = useNavigation();
 
   const navigateToDetailsScreen = () => {
-    navigation.navigate('DetailsScreen');
+    navigation.navigate('DetailsScreen', {
+      itemId: place_id,
+    });
   };
 
   return (

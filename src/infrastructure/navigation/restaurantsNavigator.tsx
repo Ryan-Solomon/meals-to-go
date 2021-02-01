@@ -5,7 +5,7 @@ import { DetailsScreen } from '../../screens/DetailsScreen';
 
 type RootStackParamList = {
   Restaurants: undefined;
-  DetailsScreen: undefined;
+  DetailsScreen: { itemId: string };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
