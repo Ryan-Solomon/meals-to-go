@@ -10,7 +10,7 @@ export type TRestaurant = {
   name: string;
   icon: string;
   photos: string[];
-  address: string;
+  vicinity: string;
   opening_hours: {
     open_now: boolean;
   };
@@ -22,7 +22,7 @@ type Props = {
 };
 
 export const RestaurantInfo: FC<Props> = ({
-  restaurant: { name, icon, photos, address, opening_hours, rating },
+  restaurant: { name, icon, photos, vicinity, opening_hours, rating },
 }) => {
   console.log(opening_hours);
   const stars = new Array(Math.floor(rating)).fill(null);
@@ -50,7 +50,7 @@ export const RestaurantInfo: FC<Props> = ({
             <Image style={styles.iconImage} source={{ uri: icon }} />
           </View>
         </StarsContainer>
-        <SubTitle>{address}</SubTitle>
+        <SubTitle>{vicinity}</SubTitle>
       </ContentContainer>
     </Container>
   );
@@ -63,9 +63,8 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   iconImage: {
-    height: 15,
-    width: 15,
-    backgroundColor: 'black',
+    height: 25,
+    width: 25,
   },
 });
 
