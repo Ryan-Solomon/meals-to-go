@@ -1,17 +1,26 @@
+import { useRoute } from '@react-navigation/native';
 import React from 'react';
 import { View, Text } from 'react-native';
-import { RestaurantInfo } from '../components/ResaurantInfo';
+import { RestaurantInfo, TRestaurant } from '../components/ResaurantInfo';
 import { useRestaurantData } from './../hooks/useRestaurantData';
 
 // Eventually, pass an ID to get card
+type TRouteParams = {
+  params: {
+    restaurant: TRestaurant;
+  };
+};
 
 export const DetailsScreen = () => {
-  const { data, status } = useRestaurantData();
+  // @ts-ignore
+  const route = useRoute<TRouteParams>();
+  const {
+    params: { restaurant },
+  } = route;
 
-  if (status === 'loading') return <Text>Loading...</Text>;
   return (
     <View>
-      <RestaurantInfo restaurant={data[0]} />
+      <RestaurantInfo restaurant={restaurant} />
     </View>
   );
 };

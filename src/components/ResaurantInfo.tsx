@@ -23,15 +23,22 @@ type Props = {
   restaurant: TRestaurant;
 };
 
-export const RestaurantInfo: FC<Props> = ({
-  restaurant: { name, icon, photos, vicinity, opening_hours, rating, place_id },
-}) => {
+export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
+  const {
+    name,
+    icon,
+    photos,
+    vicinity,
+    opening_hours,
+    rating,
+    place_id,
+  } = restaurant;
   const stars = new Array(Math.floor(rating)).fill(null);
   const navigation = useNavigation();
 
   const navigateToDetailsScreen = () => {
     navigation.navigate('DetailsScreen', {
-      itemId: place_id,
+      restaurant,
     });
   };
 
