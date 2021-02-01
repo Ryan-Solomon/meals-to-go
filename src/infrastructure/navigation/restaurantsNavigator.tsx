@@ -10,7 +10,7 @@ type RootStackParamList = {
 
 const Stack = createStackNavigator<RootStackParamList>();
 
-const RestaurantNavigator = () => {
+export const RestaurantNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name='Restaurants' component={RestaurantsScreen} />

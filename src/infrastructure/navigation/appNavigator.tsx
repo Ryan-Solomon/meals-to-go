@@ -4,8 +4,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { MapScreen } from '../../screens/MapScreen';
-import { RestaurantsScreen } from '../../screens/RestaurantsScreen';
 import { SettingsScreen } from '../../screens/SettingsScreen';
+import { RestaurantNavigator } from './restaurantsNavigator';
 
 type RootTabParamList = {
   Restaurants: undefined;
@@ -39,7 +39,7 @@ export const Navigation = () => {
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name='Restaurants' component={RestaurantsScreen} />
+        <Tab.Screen name='Restaurants' component={RestaurantNavigator} />
         <Tab.Screen name='Map' component={MapScreen} />
         <Tab.Screen name='Settings' component={SettingsScreen} />
       </Tab.Navigator>
