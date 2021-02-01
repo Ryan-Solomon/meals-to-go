@@ -5,6 +5,7 @@ import { SvgXml } from 'react-native-svg';
 import star from '../../assets/star';
 import open from '../../assets/open';
 import nextId from 'react-id-generator';
+import { useNavigation } from '@react-navigation/native';
 
 export type TRestaurant = {
   name: string;
@@ -24,11 +25,15 @@ type Props = {
 export const RestaurantInfo: FC<Props> = ({
   restaurant: { name, icon, photos, vicinity, opening_hours, rating },
 }) => {
-  console.log(opening_hours);
   const stars = new Array(Math.floor(rating)).fill(null);
+  const navigation = useNavigation();
+
+  const navigateToDetailsScreen = () => {
+    navigation.navigate('DetailsScreen');
+  };
 
   return (
-    <Container style={{ elevation: 10 }}>
+    <Container onPress={navigateToDetailsScreen} style={{ elevation: 10 }}>
       {/* @ts-ignore */}
       <Image style={styles.image} source={photos[0]} />
       <ContentContainer>
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Container = styled.View`
+const Container = styled.Pressable`
   width: 100%;
   /* height: 450px; */
   padding: ${({ theme }) => theme.space[3]};
