@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Container = styled.Pressable`
+const Container = styled.TouchableOpacity`
   width: 100%;
   /* height: 450px; */
   padding: ${({ theme }) => theme.space[3]};
