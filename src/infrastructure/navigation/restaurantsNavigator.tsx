@@ -12,7 +12,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 export const RestaurantNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator headerMode='none'>
       <Stack.Screen name='Restaurants' component={RestaurantsScreen} />
       <Stack.Screen name='DetailsScreen' component={DetailsScreen} />
     </Stack.Navigator>
