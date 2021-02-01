@@ -24,6 +24,7 @@ type Props = {
 export const RestaurantInfo: FC<Props> = ({
   restaurant: { name, icon, photos, address, opening_hours, rating },
 }) => {
+  console.log(opening_hours);
   const stars = new Array(Math.floor(rating)).fill(null);
 
   return (
@@ -39,7 +40,7 @@ export const RestaurantInfo: FC<Props> = ({
             ))}
           </View>
           <View>
-            {opening_hours.open_now ? (
+            {opening_hours?.open_now ? (
               <SvgXml xml={open} height={30} width={30} />
             ) : (
               <ClosedTitle>Closed</ClosedTitle>

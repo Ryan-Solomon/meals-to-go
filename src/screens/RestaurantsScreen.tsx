@@ -1,27 +1,18 @@
 import React from 'react';
 import { RestaurantInfo, TRestaurant } from '../components/ResaurantInfo';
-import { FlatList } from 'react-native';
-const img = require('../../assets/restaurant1.jpg');
-
-const restaurant: TRestaurant = {
-  name: 'A restaurant',
-  icon: '',
-  photos: [img],
-  address: '18701 coffee ave',
-  isOpenNow: true,
-  rating: 10,
-  isClosedTemporarily: false,
-};
-
-const restaurantArray = new Array(10).fill(restaurant);
+import { FlatList, Text } from 'react-native';
+import { useRestaurantData } from './../hooks/useRestaurantData';
 
 export const RestaurantsScreen = () => {
+  const { data, status } = useRestaurantData();
+  if (status === 'loading') return <Text>Loading..</Text>;
   return (
     <>
       <FlatList
-        data={restaurantArray}
+        data={data}
+        // @ts-ignore
         renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
-        keyExtractor={(item, idx) => item.name + idx}
+        keyExtractor={(item) => item.place_id}
       />
     </>
   );
