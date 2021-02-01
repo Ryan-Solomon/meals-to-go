@@ -18,9 +18,9 @@ export const DetailsScreen = () => {
   } = route;
 
   return (
-    <ScrollView>
+    <>
       <RestaurantInfo restaurant={restaurant} />
       <Accordion />
-    </ScrollView>
+    </>
   );
 };
