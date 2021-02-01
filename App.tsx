@@ -15,14 +15,7 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { NavigationContainer } from '@react-navigation/native';
 import { MapScreen } from './src/screens/MapScreen';
 import { SettingsScreen } from './src/screens/SettingsScreen';
-
-type RootTabParamList = {
-  Restaurants: undefined;
-  Map: undefined;
-  Settings: undefined;
-};
-
-const Tab = createBottomTabNavigator<RootTabParamList>();
+import { Navigation } from './src/infrastructure/navigation/appNavigator';
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -35,33 +28,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <NavigationContainer>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: ({ focused, color, size }) => {
-                let iconName;
-
-                if (route.name === 'Restaurants') {
-                  iconName = 'restaurant-outline';
-                } else if (route.name === 'Settings') {
-                  iconName = focused ? 'ios-list-box' : 'ios-list';
-                } else if (route.name === 'Map') {
-                  iconName = 'navigate-outline';
-                }
-
-                return <Ionicons name={iconName} size={size} color={color} />;
-              },
-            })}
-            tabBarOptions={{
-              activeTintColor: 'tomato',
-              inactiveTintColor: 'gray',
-            }}
-          >
-            <Tab.Screen name='Restaurants' component={RestaurantsScreen} />
-            <Tab.Screen name='Map' component={MapScreen} />
-            <Tab.Screen name='Settings' component={SettingsScreen} />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <Navigation />
       </Container>
     </ThemeProvider>
   );
