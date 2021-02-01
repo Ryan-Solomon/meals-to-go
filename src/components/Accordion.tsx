@@ -1,22 +1,47 @@
 import * as React from 'react';
 import { List } from 'react-native-paper';
 
-export const Accordion = () => {
-  const [expanded, setExpanded] = React.useState(true);
+type TAccordionCategories = 'breakfast' | 'lunch' | 'dinner' | 'drinks';
 
-  const handlePress = () => setExpanded(!expanded);
+const categories: ['breakfast', 'lunch', 'dinner', 'drinks'] = [
+  'breakfast',
+  'lunch',
+  'dinner',
+  'drinks',
+];
+
+export const Accordion = () => {
+  const [expanded, setExpanded] = React.useState({
+    breakfast: false,
+    lunch: false,
+    dinner: false,
+    drinks: false,
+  });
+
+  const handlePress = (category: TAccordionCategories) =>
+    setExpanded({ ...expanded, [category]: !expanded[category] });
 
   return (
-    <List.Section>
-      <List.Accordion
-        title='Breakfast'
-        left={(props) => <List.Icon {...props} icon='food-variant' />}
-        expanded={expanded}
-        onPress={handlePress}
-      >
-        <List.Item title='First item' />
-        <List.Item title='Second item' />
-      </List.Accordion>
-    </List.Section>
+    <>
+      {/* @ts-ignore */}
+      <List.Section>
+        {categories.map((category) => {
+          return (
+            <List.Accordion
+              key={category}
+              title={category[0].toUpperCase() + category.slice(1)}
+              left={(props) => <List.Icon {...props} icon='food-variant' />}
+              expanded={expanded[category]}
+              onPress={() => handlePress(category)}
+            >
+              {/* @ts-ignore */}
+              <List.Item title='First item' />
+              {/* @ts-ignore */}
+              <List.Item title='Second item' />
+            </List.Accordion>
+          );
+        })}
+      </List.Section>
+    </>
   );
 };

@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { RestaurantInfo, TRestaurant } from '../components/ResaurantInfo';
 import { Accordion } from '../components/Accordion';
 // Eventually, pass an ID to get card
@@ -18,9 +18,9 @@ export const DetailsScreen = () => {
   } = route;
 
   return (
-    <View>
+    <ScrollView>
       <RestaurantInfo restaurant={restaurant} />
       <Accordion />
-    </View>
+    </ScrollView>
   );
 };
