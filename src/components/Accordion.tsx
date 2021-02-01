@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ScrollView, View } from 'react-native';
 import { List } from 'react-native-paper';
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 
 type TAccordionCategories = 'breakfast' | 'lunch' | 'dinner' | 'drinks';
 
