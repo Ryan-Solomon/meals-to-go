@@ -2,8 +2,7 @@ import { useRoute } from '@react-navigation/native';
 import React from 'react';
 import { View, Text } from 'react-native';
 import { RestaurantInfo, TRestaurant } from '../components/ResaurantInfo';
-import { useRestaurantData } from './../hooks/useRestaurantData';
-
+import { Accordion } from '../components/Accordion';
 // Eventually, pass an ID to get card
 type TRouteParams = {
   params: {
@@ -21,6 +20,7 @@ export const DetailsScreen = () => {
   return (
     <View>
       <RestaurantInfo restaurant={restaurant} />
+      <Accordion />
     </View>
   );
 };
