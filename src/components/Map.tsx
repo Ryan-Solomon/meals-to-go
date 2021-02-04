@@ -2,18 +2,18 @@ import * as React from 'react';
 import MapView from 'react-native-maps';
 import { Searchbar } from 'react-native-paper';
 import styled from 'styled-components/native';
+import { useLocationContext } from '../context/location';
 
 export const Map = () => {
-  const [searchQuery, setSearchQuery] = React.useState('');
-  const onChangeSearch = (query: string) => setSearchQuery(query);
+  const { location, setLocation } = useLocationContext();
 
   return (
     <>
       {/* @ts-ignore */}
       <StyledSearchbar
         placeholder='Search'
-        onChangeText={onChangeSearch}
-        value={searchQuery}
+        onChangeText={(t) => setLocation(t)}
+        value={location}
         icon='map'
       />
       <StyledMap />
