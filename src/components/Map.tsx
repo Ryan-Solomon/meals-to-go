@@ -26,8 +26,4 @@ const StyledMap = styled(MapView)`
   width: 100%;
 `;
 
-const StyledSearchbar = styled(Searchbar)`
-  position: absolute;
-  top: 20px;
-  width: 100%;
-`;
+const StyledSearchbar = styled(Searchbar)``;
