@@ -12,7 +12,7 @@ const initialContext: TContext = {
 
 const LocationContext = React.createContext(initialContext);
 
-const LocationContextProvider: FC<ReactNode> = ({ children }) => {
+export const LocationContextProvider: FC<ReactNode> = ({ children }) => {
   const [location, setLocation] = useState('San Francisco');
 
   const value = { location, setLocation };

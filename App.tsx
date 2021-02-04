@@ -10,6 +10,7 @@ import {
 } from '@expo-google-fonts/oswald';
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { Navigation } from './src/infrastructure/navigation/appNavigator';
+import { LocationContextProvider } from './src/context/location';
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -21,9 +22,11 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) return <Text>Loading..</Text>;
   return (
     <ThemeProvider theme={theme}>
-      <Container>
-        <Navigation />
-      </Container>
+      <LocationContextProvider>
+        <Container>
+          <Navigation />
+        </Container>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
