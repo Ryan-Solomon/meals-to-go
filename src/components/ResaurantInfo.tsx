@@ -17,6 +17,12 @@ export type TRestaurant = {
     open_now: boolean;
   };
   rating: number;
+  geometry: {
+    location: {
+      lat: number;
+      lng: number;
+    };
+  };
 };
 
 type Props = {

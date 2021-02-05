@@ -41,7 +41,17 @@ export const Map = () => {
         }}
       >
         {data.map((restaurant) => {
-          return null;
+          return (
+            // @ts-ignore
+            <MapView.Marker
+              key={restaurant.name}
+              title={restaurant.name}
+              coordinate={{
+                latitude: restaurant.geometry.location.lat,
+                longitude: restaurant.geometry.location.lng,
+              }}
+            />
+          );
         })}
       </StyledMap>
     </>
