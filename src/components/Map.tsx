@@ -11,6 +11,8 @@ export const Map = () => {
   const { location, setLocation } = useLocationContext();
   const { data, status } = useRestaurantData();
   const [latDelta, setLatDelta] = useState(0);
+  const lat = 41.886065;
+  const lng = -87.6208832;
 
   useEffect(() => {
     const northeastLat = 41.88758823029149;
@@ -30,7 +32,14 @@ export const Map = () => {
         value={location}
         icon='map'
       />
-      <StyledMap>
+      <StyledMap
+        region={{
+          latitude: lat,
+          longitude: lng,
+          latitudeDelta: latDelta,
+          longitudeDelta: 0.02,
+        }}
+      >
         {data.map((restaurant) => {
           return null;
         })}
