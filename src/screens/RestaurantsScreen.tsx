@@ -5,6 +5,8 @@ import { useRestaurantData } from './../hooks/useRestaurantData';
 import { Searchbar } from 'react-native-paper';
 import { useLocationContext } from '../context/location';
 import { useFavoritesContext } from '../context/favorites';
+import { RestaurantCard } from './../components/RestaurantCard';
+import styled from 'styled-components/native';
 
 export const RestaurantsScreen = () => {
   const { location, setLocation } = useLocationContext();
@@ -24,13 +26,15 @@ export const RestaurantsScreen = () => {
         icon='magnify'
       />
       {favorites.length > 0 && (
-        <FlatList
-          horizontal
-          ListHeaderComponent={() => <Text>Favorites</Text>}
-          data={favorites}
-          renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
-          keyExtractor={(item) => item.place_id}
-        />
+        <FavoritesContainer>
+          <FavoritesTitle>Favorites</FavoritesTitle>
+          <FlatList
+            horizontal
+            data={favorites}
+            renderItem={({ item }) => <RestaurantCard restaurant={item} />}
+            keyExtractor={(item) => item.place_id}
+          />
+        </FavoritesContainer>
       )}
       <FlatList
         data={data}
@@ -41,3 +45,12 @@ export const RestaurantsScreen = () => {
     </>
   );
 };
+
+const FavoritesContainer = styled.View`
+  padding: ${({ theme }) => theme.space[2]};
+`;
+
+const FavoritesTitle = styled.Text`
+  font-size: ${({ theme }) => theme.sizes[1]};
+  padding-left: ${({ theme }) => theme.space[2]};
+`;
