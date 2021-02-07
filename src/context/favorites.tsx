@@ -26,7 +26,24 @@ const FavoritesContext = createContext(initialContext);
 export const FavoritesProvider: FC<ReactNode> = ({ children }) => {
   const [favorites, setFavorites] = useState<TRestaurant[]>([]);
 
-  const value = {};
+  function addFavorite(restaurant: TRestaurant) {
+    setFavorites((r) => [...r, restaurant]);
+  }
+
+  function removeFavorite(id: string) {
+    setFavorites((r) => r.filter((rest) => rest.place_id !== id));
+  }
+
+  function clearFavorites() {
+    setFavorites([]);
+  }
+
+  const value = {
+    favorites,
+    addFavorite,
+    removeFavorite,
+    clearFavorites,
+  };
   return (
     <FavoritesContext.Provider value={value}>
       {children}
