@@ -11,6 +11,7 @@ import {
 import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { Navigation } from './src/infrastructure/navigation/appNavigator';
 import { LocationContextProvider } from './src/context/location';
+import { FavoritesProvider } from './src/context/favorites';
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -23,9 +24,11 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <LocationContextProvider>
-        <Container>
-          <Navigation />
-        </Container>
+        <FavoritesProvider>
+          <Container>
+            <Navigation />
+          </Container>
+        </FavoritesProvider>
       </LocationContextProvider>
     </ThemeProvider>
   );

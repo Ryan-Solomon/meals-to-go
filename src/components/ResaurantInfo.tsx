@@ -76,23 +76,18 @@ export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
         </StarsContainer>
         <SubTitle>{vicinity}</SubTitle>
       </ContentContainer>
-      <HeartWrapper onPress={() => setFavorited(!favorited)}>
+      <HeartWrapper
+        onPress={() => {
+          favorited
+            ? removeFavorite(restaurant.place_id)
+            : addFavorite(restaurant);
+          setFavorited(!favorited);
+        }}
+      >
         {favorited ? (
-          <AntDesign
-            onPress={() => removeFavorite(restaurant.place_id)}
-            name='heart'
-            size={30}
-            color='red'
-            fill='red'
-          />
+          <AntDesign name='heart' size={30} color='red' fill='red' />
         ) : (
-          <AntDesign
-            onPress={() => addFavorite(restaurant)}
-            name='hearto'
-            size={30}
-            color='red'
-            fill='red'
-          />
+          <AntDesign name='hearto' size={30} color='red' fill='red' />
         )}
       </HeartWrapper>
     </Container>

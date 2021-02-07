@@ -11,6 +11,9 @@ export const RestaurantsScreen = () => {
   const { data, status } = useRestaurantData();
   const { favorites } = useFavoritesContext();
   if (status === 'loading') return <Text>Loading..</Text>;
+
+  console.log(favorites);
+
   return (
     <>
       {/* @ts-ignore */}
@@ -23,6 +26,7 @@ export const RestaurantsScreen = () => {
       {favorites.length > 0 && (
         <FlatList
           horizontal
+          ListHeaderComponent={() => <Text>Favorites</Text>}
           data={favorites}
           renderItem={({ item }) => <RestaurantInfo restaurant={item} />}
           keyExtractor={(item) => item.place_id}
