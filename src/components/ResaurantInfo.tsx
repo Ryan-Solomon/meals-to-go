@@ -50,7 +50,7 @@ export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
 
   return (
     <Container onPress={navigateToDetailsScreen} style={{ elevation: 10 }}>
-      <Image style={styles.image} source={{ uri: photos[0] }} />
+      <Image style={styles.image} source={{ uri: icon }} />
       <ContentContainer>
         <Title>{name}</Title>
         <StarsContainer>
