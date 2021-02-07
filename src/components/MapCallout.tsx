@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { TRestaurant } from './ResaurantInfo';
-import { Image } from 'react-native';
 import styled from 'styled-components/native';
 import WebView from 'react-native-webview';
 import { Platform } from 'react-native';
@@ -11,7 +10,6 @@ type TProps = {
 
 export const MapCallout: FC<TProps> = ({ restaurant }) => {
   const { name, photos } = restaurant;
-  const img = isAndroid;
   return (
     <Container>
       <SImage source={{ uri: photos[0] }} />
@@ -20,13 +18,13 @@ export const MapCallout: FC<TProps> = ({ restaurant }) => {
   );
 };
 
-const Container = styled(WebView)`
+const Container = styled.View`
   background-color: #333;
   width: 100px;
   height: 100px;
 `;
 
-const SImage = styled(Image)``;
+const SImage = styled(WebView)``;
 
 const SText = styled.Text`
   color: white;
