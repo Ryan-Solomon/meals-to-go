@@ -7,11 +7,13 @@ import { useRestaurantData } from '../hooks/useRestaurantData';
 import { Text } from 'react-native';
 import { useEffect, useState } from 'react';
 import { MapCallout } from './MapCallout';
+import { useNavigation } from '@react-navigation/native';
 
 export const Map = () => {
   const { location, setLocation } = useLocationContext();
   const { data, status } = useRestaurantData();
   const [latDelta, setLatDelta] = useState(0);
+  const navigation = useNavigation();
   const lat = 41.886065;
   const lng = -87.6208832;
 
@@ -53,7 +55,11 @@ export const Map = () => {
               }}
             >
               {/* @ts-ignore */}
-              <MapView.Callout>
+              <MapView.Callout
+                onPress={() =>
+                  navigation.navigate('DetailsScreen', { restaurant })
+                }
+              >
                 <MapCallout restaurant={restaurant} />
                 {/* @ts-ignore */}
               </MapView.Callout>

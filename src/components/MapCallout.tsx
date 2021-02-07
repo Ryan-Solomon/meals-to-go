@@ -19,7 +19,6 @@ export const MapCallout: FC<TProps> = ({ restaurant }) => {
 };
 
 const Container = styled.View`
-  background-color: #333;
   width: 100px;
   height: 100px;
   padding: 5px;
@@ -28,5 +27,5 @@ const Container = styled.View`
 const SImage = styled(WebView)``;
 
 const SText = styled.Text`
-  color: white;
+  color: #333;
 `;
