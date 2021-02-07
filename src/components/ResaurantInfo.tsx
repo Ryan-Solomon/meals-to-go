@@ -7,6 +7,7 @@ import open from '../../assets/open';
 import nextId from 'react-id-generator';
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
+import { useFavoritesContext } from '../context/favorites';
 
 export type TRestaurant = {
   name: string;
@@ -32,6 +33,7 @@ type Props = {
 
 export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
   const [favorited, setFavorited] = useState(false);
+  const { addFavorite, removeFavorite } = useFavoritesContext();
   const {
     name,
     icon,
@@ -76,9 +78,21 @@ export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
       </ContentContainer>
       <HeartWrapper onPress={() => setFavorited(!favorited)}>
         {favorited ? (
-          <AntDesign name='heart' size={30} color='red' fill='red' />
+          <AntDesign
+            onPress={() => removeFavorite(restaurant.place_id)}
+            name='heart'
+            size={30}
+            color='red'
+            fill='red'
+          />
         ) : (
-          <AntDesign name='hearto' size={30} color='red' fill='red' />
+          <AntDesign
+            onPress={() => addFavorite(restaurant)}
+            name='hearto'
+            size={30}
+            color='red'
+            fill='red'
+          />
         )}
       </HeartWrapper>
     </Container>
