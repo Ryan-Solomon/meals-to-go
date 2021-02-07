@@ -6,6 +6,7 @@ import { useLocationContext } from '../context/location';
 import { useRestaurantData } from '../hooks/useRestaurantData';
 import { Text } from 'react-native';
 import { useEffect, useState } from 'react';
+import { MapCallout } from './MapCallout';
 
 export const Map = () => {
   const { location, setLocation } = useLocationContext();
@@ -50,7 +51,14 @@ export const Map = () => {
                 latitude: restaurant.geometry.location.lat,
                 longitude: restaurant.geometry.location.lng,
               }}
-            />
+            >
+              {/* @ts-ignore */}
+              <MapView.Callout>
+                <MapCallout restaurant={restaurant} />
+                {/* @ts-ignore */}
+              </MapView.Callout>
+              {/* @ts-ignore */}
+            </MapView.Marker>
           );
         })}
       </StyledMap>
