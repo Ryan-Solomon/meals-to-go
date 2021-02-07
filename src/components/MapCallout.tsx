@@ -9,8 +9,6 @@ type TProps = {
   restaurant: TRestaurant;
 };
 
-const isAndroid = Platform.OS === 'android';
-
 export const MapCallout: FC<TProps> = ({ restaurant }) => {
   const { name, photos } = restaurant;
   const img = isAndroid;
@@ -22,7 +20,7 @@ export const MapCallout: FC<TProps> = ({ restaurant }) => {
   );
 };
 
-const Container = styled.View`
+const Container = styled(WebView)`
   background-color: #333;
   width: 100px;
   height: 100px;
