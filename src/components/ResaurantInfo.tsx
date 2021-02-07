@@ -51,16 +51,9 @@ export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
   };
 
   return (
-    <Container onPress={navigateToDetailsScreen} style={{ elevation: 10 }}>
-      <HeartWrapper>
-        {favorited ? (
-          <AntDesign name='heart' size={30} color='red' fill='red' />
-        ) : (
-          <AntDesign name='hearto' size={30} color='red' fill='red' />
-        )}
-      </HeartWrapper>
-      <Image style={styles.image} source={{ uri: icon }} />
-      <ContentContainer>
+    <Container style={{ elevation: 10 }}>
+      <ContentContainer onPress={navigateToDetailsScreen}>
+        <Image style={styles.image} source={{ uri: icon }} />
         <Title>{name}</Title>
         <StarsContainer>
           <View style={{ flexDirection: 'row' }}>
@@ -81,6 +74,13 @@ export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
         </StarsContainer>
         <SubTitle>{vicinity}</SubTitle>
       </ContentContainer>
+      <HeartWrapper onPress={() => setFavorited(!favorited)}>
+        {favorited ? (
+          <AntDesign name='heart' size={30} color='red' fill='red' />
+        ) : (
+          <AntDesign name='hearto' size={30} color='red' fill='red' />
+        )}
+      </HeartWrapper>
     </Container>
   );
 };
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Container = styled.TouchableOpacity`
+const Container = styled.View`
   width: 100%;
   /* height: 450px; */
   padding: ${({ theme }) => theme.space[3]};
@@ -107,7 +107,7 @@ const Container = styled.TouchableOpacity`
   position: relative;
 `;
 
-const ContentContainer = styled.View`
+const ContentContainer = styled.TouchableOpacity`
   padding: ${({ theme }) => theme.space[1]};
 `;
 
@@ -133,8 +133,8 @@ const ClosedTitle = styled(SubTitle)`
   color: red;
 `;
 
-const HeartWrapper = styled.View`
-  position: absolute;
-  top: 15px;
-  right: 15px;
+const HeartWrapper = styled.TouchableOpacity`
+  justify-content: flex-end;
+  flex-direction: row;
+  padding-right: 10px;
 `;
