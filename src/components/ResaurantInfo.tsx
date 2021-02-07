@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 import styled from 'styled-components/native';
 import { SvgXml } from 'react-native-svg';
@@ -6,6 +6,7 @@ import star from '../../assets/star';
 import open from '../../assets/open';
 import nextId from 'react-id-generator';
 import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
 
 export type TRestaurant = {
   name: string;
@@ -30,6 +31,7 @@ type Props = {
 };
 
 export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
+  const [favorited, setFavorited] = useState(false);
   const {
     name,
     icon,
@@ -50,6 +52,13 @@ export const RestaurantInfo: FC<Props> = ({ restaurant }) => {
 
   return (
     <Container onPress={navigateToDetailsScreen} style={{ elevation: 10 }}>
+      <HeartWrapper>
+        {favorited ? (
+          <AntDesign name='heart' size={30} color='red' fill='red' />
+        ) : (
+          <AntDesign name='hearto' size={30} color='red' fill='red' />
+        )}
+      </HeartWrapper>
       <Image style={styles.image} source={{ uri: icon }} />
       <ContentContainer>
         <Title>{name}</Title>
@@ -95,6 +104,7 @@ const Container = styled.TouchableOpacity`
   background-color: white;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
   margin-bottom: ${({ theme }) => theme.space[3]};
+  position: relative;
 `;
 
 const ContentContainer = styled.View`
@@ -121,4 +131,10 @@ const StarsContainer = styled.View`
 
 const ClosedTitle = styled(SubTitle)`
   color: red;
+`;
+
+const HeartWrapper = styled.View`
+  position: absolute;
+  top: 15px;
+  right: 15px;
 `;
