@@ -12,6 +12,7 @@ import { useFonts as useLato, Lato_400Regular } from '@expo-google-fonts/lato';
 import { Navigation } from './src/infrastructure/navigation/appNavigator';
 import { LocationContextProvider } from './src/context/location';
 import { FavoritesProvider } from './src/context/favorites';
+import { AuthProvider } from './src/context/auth';
 
 export default function App() {
   const [oswaldLoaded] = useOswald({
@@ -23,13 +24,15 @@ export default function App() {
   if (!oswaldLoaded || !latoLoaded) return <Text>Loading..</Text>;
   return (
     <ThemeProvider theme={theme}>
-      <LocationContextProvider>
-        <FavoritesProvider>
-          <Container>
-            <Navigation />
-          </Container>
-        </FavoritesProvider>
-      </LocationContextProvider>
+      <AuthProvider>
+        <LocationContextProvider>
+          <FavoritesProvider>
+            <Container>
+              <Navigation />
+            </Container>
+          </FavoritesProvider>
+        </LocationContextProvider>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
