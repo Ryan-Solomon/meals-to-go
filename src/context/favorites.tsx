@@ -3,9 +3,11 @@ import React, {
   FC,
   ReactNode,
   useContext,
+  useEffect,
   useState,
 } from 'react';
 import { TRestaurant } from '../components/ResaurantInfo';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type TFavoritesContext = {
   favorites: TRestaurant[];
@@ -37,6 +39,34 @@ export const FavoritesProvider: FC<ReactNode> = ({ children }) => {
   function clearFavorites() {
     setFavorites([]);
   }
+
+  async function storeFavorites(value: TRestaurant[]) {
+    try {
+      const jsonValue = JSON.stringify(value);
+      await AsyncStorage.setItem('@favorites', jsonValue);
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+  async function loadFavorites() {
+    try {
+      const value = await AsyncStorage.getItem('@favorites');
+      if (value !== null) {
+        setFavorites(JSON.parse(value));
+      }
+    } catch (e) {
+      console.log(e.message);
+    }
+  }
+
+  useEffect(() => {
+    loadFavorites();
+  }, []);
+
+  useEffect(() => {
+    storeFavorites(favorites);
+  }, [favorites]);
 
   const value = {
     favorites,

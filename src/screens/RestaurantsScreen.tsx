@@ -1,5 +1,5 @@
 import React from 'react';
-import { RestaurantInfo, TRestaurant } from '../components/ResaurantInfo';
+import { RestaurantInfo } from '../components/ResaurantInfo';
 import { FlatList, Text } from 'react-native';
 import { useRestaurantData } from './../hooks/useRestaurantData';
 import { Searchbar } from 'react-native-paper';
@@ -29,6 +29,7 @@ export const RestaurantsScreen = () => {
         <FavoritesContainer>
           <FavoritesTitle>Favorites</FavoritesTitle>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal
             data={favorites}
             renderItem={({ item }) => <RestaurantCard restaurant={item} />}
