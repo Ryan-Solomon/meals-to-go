@@ -1,15 +1,33 @@
 import * as firebase from 'firebase';
-import React, { useState, createContext, FC, ReactNode } from 'react';
+import React, {
+  useState,
+  createContext,
+  FC,
+  ReactNode,
+  useContext,
+} from 'react';
 
 const loginRequest = (email: string, password: string) => {
   firebase.auth().signInWithEmailAndPassword(email, password);
 };
 
-const AuthContext = createContext({});
+type TStatus = 'loading' | 'error' | 'idle';
+
+type TAuthContext = {
+  user: firebase.auth.UserCredential | null;
+  status: TStatus;
+};
+
+const initialContext: TAuthContext = {
+  user: null,
+  status: 'idle',
+};
+
+const AuthContext = createContext(initialContext);
 
 export const AuthProvider: FC<ReactNode> = ({ children }) => {
-  const [user, setUser] = useState<firebase.auth.UserCredential>();
-  const [status, setStatus] = useState<'loading' | 'error' | 'idle'>('idle');
+  const [user, setUser] = useState<firebase.auth.UserCredential | null>(null);
+  const [status, setStatus] = useState<TStatus>('idle');
 
   async function onLogin(email: string, password: string) {
     setStatus('loading');
@@ -25,10 +43,14 @@ export const AuthProvider: FC<ReactNode> = ({ children }) => {
     }
   }
 
-  const providedValues = {};
+  const providedValues = { user, status };
   return (
     <AuthContext.Provider value={providedValues}>
       {children}
     </AuthContext.Provider>
   );
+};
+
+export const useAuthContext = () => {
+  return useContext(AuthContext);
 };
