@@ -2,16 +2,23 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { BackgroundImage } from './BackgroundImage';
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const img = require('../../assets/accBg.jpg');
 
 export const Account = () => {
+  const navigation = useNavigation();
+
+  function navigate(location: 'Login' | 'Register') {
+    navigation.navigate(location);
+  }
+
   return (
     <AccountContainer>
       <BackgroundImage image={img}>
         <AccountHeader>Meals To Go</AccountHeader>
         <ButtonContainer style={{ elevation: 2 }}>
-          <Button>
+          <Button onPress={() => navigate('Login')}>
             <AntDesign
               style={{ marginRight: 15 }}
               name='unlock'
@@ -21,7 +28,7 @@ export const Account = () => {
             <ButtonText style={{ marginRight: 20 }}>Login</ButtonText>
           </Button>
           <Spacer />
-          <Button>
+          <Button onPress={() => navigate('Register')}>
             <ButtonText>Create Account</ButtonText>
           </Button>
         </ButtonContainer>
