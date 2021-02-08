@@ -24,3 +24,10 @@ const AccountHeader = styled.Text`
   font-size: ${({ theme }) => theme.fontSizes.h5};
   font-weight: bold;
 `;
+
+const Button = styled.TouchableOpacity`
+  background-color: teal;
+  color: white;
+  padding: ${({ theme }) => theme.space[3]};
+  font-size: ${({ theme }) => theme.fontSizes.h6};
+`;
