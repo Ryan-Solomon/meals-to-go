@@ -3,8 +3,10 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
+import { useAuthContext } from '../../context/auth';
 import { MapScreen } from '../../screens/MapScreen';
 import { SettingsScreen } from '../../screens/SettingsScreen';
+import { AccountNavigator } from './accountNavigator';
 import { RestaurantNavigator } from './restaurantsNavigator';
 
 type RootTabParamList = {
@@ -16,6 +18,15 @@ type RootTabParamList = {
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
 export const Navigation = () => {
+  const { isAuthenticated } = useAuthContext();
+
+  if (!isAuthenticated)
+    return (
+      <NavigationContainer>
+        <AccountNavigator />
+      </NavigationContainer>
+    );
+
   return (
     <NavigationContainer>
       <Tab.Navigator
