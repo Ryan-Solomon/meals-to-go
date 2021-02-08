@@ -16,17 +16,20 @@ type TStatus = 'loading' | 'error' | 'idle';
 type TAuthContext = {
   user: firebase.auth.UserCredential | null;
   status: TStatus;
+  isAuthenticated: boolean;
 };
 
 const initialContext: TAuthContext = {
   user: null,
   status: 'idle',
+  isAuthenticated: false,
 };
 
 const AuthContext = createContext(initialContext);
 
 export const AuthProvider: FC<ReactNode> = ({ children }) => {
   const [user, setUser] = useState<firebase.auth.UserCredential | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [status, setStatus] = useState<TStatus>('idle');
 
   async function onLogin(email: string, password: string) {
@@ -36,6 +39,7 @@ export const AuthProvider: FC<ReactNode> = ({ children }) => {
         .auth()
         .signInWithEmailAndPassword(email, password);
       setUser(u);
+      setIsAuthenticated(true);
       setStatus('idle');
     } catch (e) {
       console.log(e.message);
@@ -43,7 +47,7 @@ export const AuthProvider: FC<ReactNode> = ({ children }) => {
     }
   }
 
-  const providedValues = { user, status };
+  const providedValues = { user, status, isAuthenticated };
   return (
     <AuthContext.Provider value={providedValues}>
       {children}
