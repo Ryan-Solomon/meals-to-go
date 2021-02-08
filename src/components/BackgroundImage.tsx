@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
-import { ImageBackground, StyleSheet } from 'react-native';
+import { ImageBackground, ImageSourcePropType, StyleSheet } from 'react-native';
 
-const img = require('../../assets/accBg.jpg');
+type TProps = {
+  image: ImageSourcePropType;
+};
 
-export const BackgroundImage: FC = ({ children }) => {
+export const BackgroundImage: FC<TProps> = ({ children, image }) => {
   return (
-    <ImageBackground style={styles.backgroundImage} source={img}>
+    <ImageBackground style={styles.backgroundImage} source={image}>
       {children}
     </ImageBackground>
   );

@@ -2,10 +2,12 @@ import React from 'react';
 import styled from 'styled-components/native';
 import { BackgroundImage } from './BackgroundImage';
 
+const img = require('../../assets/accBg.jpg');
+
 export const Account = () => {
   return (
     <AccountContainer>
-      <BackgroundImage>
+      <BackgroundImage image={img}>
         <AccountHeader>Meals To Go</AccountHeader>
       </BackgroundImage>
     </AccountContainer>
