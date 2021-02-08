@@ -14,8 +14,6 @@ export const RestaurantsScreen = () => {
   const { favorites } = useFavoritesContext();
   if (status === 'loading') return <Text>Loading..</Text>;
 
-  console.log(favorites);
-
   return (
     <>
       {/* @ts-ignore */}
