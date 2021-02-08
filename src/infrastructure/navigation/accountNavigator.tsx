@@ -6,6 +6,7 @@ import { LoginScreen } from '../../screens/LoginScreen';
 type TStackParamList = {
   Main: undefined;
   Login: undefined;
+  Register: undefined;
 };
 
 const Stack = createStackNavigator<TStackParamList>();
@@ -15,6 +16,7 @@ export const AccountNavigator = () => {
     <Stack.Navigator headerMode='none'>
       <Stack.Screen name='Main' component={AccountScreen} />
       <Stack.Screen name='Login' component={LoginScreen} />
+      <Stack.Screen name='Register' component={LoginScreen} />
     </Stack.Navigator>
   );
 };
