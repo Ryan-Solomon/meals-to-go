@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { BackgroundImage } from './BackgroundImage';
+import { AntDesign } from '@expo/vector-icons';
 
 const img = require('../../assets/accBg.jpg');
 
@@ -11,7 +12,13 @@ export const Account = () => {
         <AccountHeader>Meals To Go</AccountHeader>
         <ButtonContainer style={{ elevation: 2 }}>
           <Button>
-            <ButtonText>Login</ButtonText>
+            <AntDesign
+              style={{ marginRight: 15 }}
+              name='unlock'
+              size={24}
+              color='white'
+            />
+            <ButtonText style={{ marginRight: 20 }}>Login</ButtonText>
           </Button>
           <Spacer />
           <Button>
@@ -45,8 +52,10 @@ const ButtonContainer = styled.View`
 `;
 
 const Button = styled.TouchableOpacity`
-  background-color: #00aeff;
+  background-color: #333;
   padding: ${({ theme }) => theme.space[3]};
+  flex-direction: row;
+  justify-content: center;
 `;
 
 const Spacer = styled.View`
@@ -55,7 +64,7 @@ const Spacer = styled.View`
 `;
 
 const ButtonText = styled.Text`
-  color: #333;
+  color: #fff;
   font-weight: bold;
   font-size: ${({ theme }) => theme.fontSizes.h6};
   text-align: center;
