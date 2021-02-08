@@ -19,4 +19,8 @@ const AccountContainer = styled.View`
   flex-direction: column;
 `;
 
-const AccountHeader = styled.Text``;
+const AccountHeader = styled.Text`
+  text-align: center;
+  font-size: ${({ theme }) => theme.fontSizes.h5};
+  font-weight: bold;
+`;
