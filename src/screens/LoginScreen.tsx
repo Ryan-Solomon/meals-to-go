@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BackgroundImage } from '../components/BackgroundImage';
 import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons';
+import { useAuthContext } from '../context/auth';
 
 const img = require('../../assets/bgLogin.jpg');
 
@@ -11,10 +12,21 @@ type TLoginState = {
 };
 
 export const LoginScreen = () => {
+  const { onLogin } = useAuthContext();
   const [loginState, setLoginState] = useState<TLoginState>({
     email: '',
     password: '',
   });
+
+  function handleLogin() {
+    const { email, password } = loginState;
+    onLogin(email, password);
+    setLoginState({
+      email: '',
+      password: '',
+    });
+  }
+
   return (
     <>
       <BackgroundImage image={img}>
@@ -34,7 +46,7 @@ export const LoginScreen = () => {
               placeholder='Password'
               secureTextEntry
             />
-            <Button>
+            <Button onPress={handleLogin}>
               <AntDesign
                 style={{ marginRight: 15 }}
                 name='unlock'
