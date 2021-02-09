@@ -14,6 +14,11 @@ type TAuthContext = {
   status: TStatus;
   isAuthenticated: boolean;
   onLogin: (email: string, password: string) => void;
+  onRegister: (
+    email: string,
+    password: string,
+    confirmedPassword: string
+  ) => void;
 };
 
 const initialContext: TAuthContext = {
@@ -21,6 +26,8 @@ const initialContext: TAuthContext = {
   status: 'idle',
   isAuthenticated: false,
   onLogin: (email: string, password: string) => null,
+  onRegister: (email: string, password: string, confirmedPassword: string) =>
+    null,
 };
 
 const AuthContext = createContext(initialContext);
@@ -67,7 +74,7 @@ export const AuthProvider: FC<ReactNode> = ({ children }) => {
     }
   }
 
-  const providedValues = { user, status, isAuthenticated, onLogin };
+  const providedValues = { user, status, isAuthenticated, onLogin, onRegister };
   return (
     <AuthContext.Provider value={providedValues}>
       {children}
