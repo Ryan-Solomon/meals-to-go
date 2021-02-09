@@ -3,6 +3,7 @@ import { BackgroundImage } from '../components/BackgroundImage';
 import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons';
 import { useAuthContext } from '../context/auth';
+import { useNavigation } from '@react-navigation/native';
 
 const img = require('../../assets/bgLogin.jpg');
 
@@ -12,6 +13,7 @@ type TLoginState = {
 };
 
 export const LoginScreen = () => {
+  const navigation = useNavigation();
   const { onLogin } = useAuthContext();
   const [loginState, setLoginState] = useState<TLoginState>({
     email: '',
@@ -59,6 +61,10 @@ export const LoginScreen = () => {
               />
               <ButtonText style={{ marginRight: 20 }}>Login</ButtonText>
             </Button>
+            <Spacer />
+            <Button onPress={() => navigation.goBack()}>
+              <ButtonText>Go Back</ButtonText>
+            </Button>
           </FormContainer>
         </BackgroundCover>
       </BackgroundImage>
@@ -82,6 +88,11 @@ const FormContainer = styled.View`
   background: rgba(255, 255, 255, 0.7);
   padding: 20px;
   margin-top: 20px;
+`;
+
+const Spacer = styled.View`
+  margin-top: 7px;
+  margin-bottom: 7px;
 `;
 
 const Input = styled.TextInput`

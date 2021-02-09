@@ -51,7 +51,7 @@ const AccountHeader = styled.Text`
 const ButtonContainer = styled.View`
   background: rgba(300, 300, 300, 0.65);
   padding: 20px;
-  width: 50%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 30px;
