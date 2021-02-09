@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { BackgroundImage } from '../components/BackgroundImage';
 import styled from 'styled-components/native';
+import { AntDesign } from '@expo/vector-icons';
+
 const img = require('../../assets/bgLogin.jpg');
 
 export const LoginScreen = () => {
@@ -10,6 +11,19 @@ export const LoginScreen = () => {
       <BackgroundImage image={img}>
         <BackgroundCover>
           <Header>Login</Header>
+          <FormContainer>
+            <Input placeholder='E-mail' />
+            <Input placeholder='Password' secureTextEntry />
+            <Button>
+              <AntDesign
+                style={{ marginRight: 15 }}
+                name='unlock'
+                size={24}
+                color='white'
+              />
+              <ButtonText style={{ marginRight: 20 }}>Login</ButtonText>
+            </Button>
+          </FormContainer>
         </BackgroundCover>
       </BackgroundImage>
     </>
@@ -28,9 +42,18 @@ const Header = styled.Text`
   font-size: ${({ theme }) => theme.fontSizes.h4};
 `;
 
-const FormContainer = styled.View``;
+const FormContainer = styled.View`
+  background: rgba(255, 255, 255, 0.7);
+`;
 
-const Input = styled.TextInput``;
+const Input = styled.TextInput`
+  height: 50px;
+  width: 300px;
+  font-size: ${({ theme }) => theme.fontSizes.h6};
+  padding: 10px;
+  margin: 10px 0px;
+  background: #fff;
+`;
 
 const Button = styled.TouchableOpacity`
   background-color: #333;
