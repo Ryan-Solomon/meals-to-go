@@ -37,6 +37,8 @@ export const LoginScreen = () => {
               value={loginState.email}
               onChangeText={(t) => setLoginState({ ...loginState, email: t })}
               placeholder='E-mail'
+              textContentType='emailAddress'
+              keyboardType='email-address'
             />
             <Input
               value={loginState.password}
@@ -44,6 +46,8 @@ export const LoginScreen = () => {
                 setLoginState({ ...loginState, password: t })
               }
               placeholder='Password'
+              textContentType='password'
+              autoCapitalize='none'
               secureTextEntry
             />
             <Button onPress={handleLogin}>
