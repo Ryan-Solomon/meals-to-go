@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BackgroundImage } from '../components/BackgroundImage';
 import styled from 'styled-components/native';
 import { AntDesign } from '@expo/vector-icons';
 
 const img = require('../../assets/bgLogin.jpg');
 
+type TLoginState = {
+  email: string;
+  password: string;
+};
+
 export const LoginScreen = () => {
+  const [loginState, setLoginState] = useState<TLoginState>({
+    email: '',
+    password: '',
+  });
   return (
     <>
       <BackgroundImage image={img}>
         <BackgroundCover>
           <Header>Login</Header>
           <FormContainer>
-            <Input placeholder='E-mail' />
-            <Input placeholder='Password' secureTextEntry />
+            <Input
+              value={loginState.email}
+              onChangeText={(t) => setLoginState({ ...loginState, email: t })}
+              placeholder='E-mail'
+            />
+            <Input
+              value={loginState.password}
+              onChangeText={(t) =>
+                setLoginState({ ...loginState, password: t })
+              }
+              placeholder='Password'
+              secureTextEntry
+            />
             <Button>
               <AntDesign
                 style={{ marginRight: 15 }}
