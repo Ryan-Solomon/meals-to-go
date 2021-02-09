@@ -45,6 +45,28 @@ export const AuthProvider: FC<ReactNode> = ({ children }) => {
     }
   }
 
+  async function onRegister(
+    email: string,
+    password: string,
+    confirmedPassword: string
+  ) {
+    setStatus('loading');
+    if (password !== confirmedPassword) {
+      throw new Error("Error: Passwords don't match");
+    }
+    try {
+      const u = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password);
+      setUser(u);
+      setIsAuthenticated(true);
+      setStatus('idle');
+    } catch (e) {
+      console.log(e.message);
+      setStatus('error');
+    }
+  }
+
   const providedValues = { user, status, isAuthenticated, onLogin };
   return (
     <AuthContext.Provider value={providedValues}>
