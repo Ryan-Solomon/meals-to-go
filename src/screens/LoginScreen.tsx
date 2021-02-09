@@ -44,6 +44,8 @@ const Header = styled.Text`
 
 const FormContainer = styled.View`
   background: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  margin-top: 20px;
 `;
 
 const Input = styled.TextInput`
