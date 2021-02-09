@@ -7,22 +7,20 @@ import React, {
   useContext,
 } from 'react';
 
-const loginRequest = (email: string, password: string) => {
-  firebase.auth().signInWithEmailAndPassword(email, password);
-};
-
 type TStatus = 'loading' | 'error' | 'idle';
 
 type TAuthContext = {
   user: firebase.auth.UserCredential | null;
   status: TStatus;
   isAuthenticated: boolean;
+  onLogin: (email: string, password: string) => void;
 };
 
 const initialContext: TAuthContext = {
   user: null,
   status: 'idle',
   isAuthenticated: false,
+  onLogin: (email: string, password: string) => null,
 };
 
 const AuthContext = createContext(initialContext);
@@ -47,7 +45,7 @@ export const AuthProvider: FC<ReactNode> = ({ children }) => {
     }
   }
 
-  const providedValues = { user, status, isAuthenticated };
+  const providedValues = { user, status, isAuthenticated, onLogin };
   return (
     <AuthContext.Provider value={providedValues}>
       {children}
